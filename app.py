@@ -1,10 +1,10 @@
 from flask import Flask, request, jsonify, render_template
-import pickle5 as pickle
+# import pickle5 as pickle
 
 app = Flask(__name__)
 
-with open('model.pkl' , 'rb') as f:
-  sentiment_model = pickle.load(f)
+# with open('model.pkl' , 'rb') as f:
+#   sentiment_model = pickle.load(f)
 
 
 @app.route("/predict", methods=['POST'])

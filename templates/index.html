@@ -6,20 +6,41 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sentiment Analysis Model</title>
+    <link href="https://unpkg.com/@webpixels/css/dist/index.css" rel="stylesheet">
+
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+        }
+    </style>
+
 </head>
 
 <body>
-    <h1>Sentiment Analysis Model</h1>
 
-    <form action="" id="myForm">
-        <textarea placeholder="Enter your query here!!" name="query" id="">
-        </textarea>
-        <input type="submit" value="Predict">
-    </form>
+    <div class="row align-items-center justify-content-center" style="height: 100vh;">
+        <div class="col border border-circular border-primary" style="max-width: 70vw;">
+            <div class="p-5 text-center">
+                <h1>Sentiment Analysis Model</h1>
 
-    <div>
-        <h3>Output : <span id="prediction">{POSITIVE/NEGATIVE}</span></h3>
-        <h3>Score : <span id="score">0.99</span></h3>
+                <div class="my-5">
+                    <form class="border" action="" id="myForm">
+                        <div class="d-flex align-items-center justify-content-stretch">
+                            <input class="form-control border border-primary" placeholder="Enter your query here!!"
+                                name="query" id="">
+                            </input>
+                            <input class="btn btn-success" type="submit" value="Predict">
+                        </div>
+                    </form>
+                </div>
+
+                <div class="my-5">
+                    <h3>Output : <span id="prediction">Prediction will appear here</span></h3>
+                    <h3>Score : <span id="score">Prediction score will appear here</span></h3>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script>
