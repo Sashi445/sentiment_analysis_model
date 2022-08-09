@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentiment Analysis Model</title>
+</head>
+
+<body>
+    <h1>Sentiment Analysis Model</h1>
+
+    <form action="" id="myForm">
+        <textarea placeholder="Enter your query here!!" name="query" id="">
+        </textarea>
+        <input type="submit" value="Predict">
+    </form>
+
+    <div>
+        <h3>Output : <span id="prediction">{POSITIVE/NEGATIVE}</span></h3>
+        <h3>Score : <span id="score">0.99</span></h3>
+    </div>
+
+    <script>
+
+        function loadOutput(prediction, score) {
+            document.getElementById("prediction").innerHTML = prediction;
+            document.getElementById("score").innerHTML = score;
+        }
+
+        document.getElementById("myForm").addEventListener('submit', (e) => {
+            e.preventDefault();
+            // console.log(e.target.elements["query"].value)
+
+            const data = { query: e.target.elements["query"].value }
+
+            fetch('/predict', {
+                method: 'POST', // or 'PUT'
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    loadOutput(data.label, data.score);
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+
+        })
+    </script>
+
+</body>
+
+</html>
